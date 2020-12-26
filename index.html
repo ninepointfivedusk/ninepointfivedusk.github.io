@@ -2,7 +2,8 @@
 <html>
 
 <head>
-    <title>玖點伍黃昏 | Nine Point Five Dusk</title>
+    <title>玖點伍黃昏 | Nine Point Five Dusk</title>    
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -283,12 +284,14 @@
         })
 
 
-        var data;
-        data = $.csv.toArray("./歌曲定調_new.csv");
-        console.log(data);
+        let csv_data;
+        // let c = 'EP,單元名稱,日期,原唱,歌名,年份,速度,原調,原音域,長志調,長志音域,YouTube連結,開始秒數,FB連結\n0,,2020/3/17,許哲珮,氣球,2001,,bE,bB3-D5,bA,bE4-G5,,,';
+        // data = $.csv.toObjects(c);
+        // console.log(data);
 
-        $.get( "./歌曲定調_new.csv", function( data ) {
+        $.get( "https://github.com/ninepointfivedusk/ninepointfivedusk.github.io/blob/master/%E6%AD%8C%E6%9B%B2%E5%AE%9A%E8%AA%BF_new.csv", function( data ) {
           console.log(data)
+          csv_data = $.csv.toObjects(data);
         });
 
     // let btn_email = document.getElementById("btn_email");
