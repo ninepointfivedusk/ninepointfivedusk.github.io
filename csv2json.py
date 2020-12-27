@@ -40,5 +40,5 @@ if __name__ == '__main__':
             file.write(str(soup))
 
 
-    # os.remove("index.html")
-    # os.rename("index5.html", "index55.html")
+    os.remove("index.html")
+    os.rename("index2.html", "index.html")
