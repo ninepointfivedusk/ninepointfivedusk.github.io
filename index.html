@@ -32,7 +32,7 @@
     }
 
     .modal-header {
-        height: 250px;
+        height: 300px;
     }
     </style>
     <style type="text/css">
@@ -157,7 +157,7 @@
         text-align: left;
     }
 
-    body {
+    .modal-content * {
         font-family: serif;
     }
     </style>
@@ -219,8 +219,7 @@
 </html>
 <div class="row">
     <div class="col-1 col-sm-3 col-md-4"></div>
-    <div class="col-10 col-sm-6 col-md-4">
-        <p style="color:white">點我看唱過的歌</p>   
+    <div class="col-10 col-sm-6 col-md-4">  
         <?xml version="1.0" encoding="UTF-8" standalone="no"?>
         <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
         <svg data-target="#exampleModal" data-toggle="modal" height="100%" id="logo" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;" version="1.1" viewbox="0 0 171 171" width="100%" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:serif="http://www.serif.com/" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -379,7 +378,7 @@ function sort_song_data_by(song_data, by) {
 }
 
 function generate_youtube_embed_html(video_id, time) {
-    let r = `<iframe class="yt_frame" width="560" height="315" src="https://www.youtube.com/embed/${video_id}?start=${time}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+    let r = `<iframe class="yt_frame" width="100%" height="300" src="https://www.youtube.com/embed/${video_id}?start=${time}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
     return r
 }
 
