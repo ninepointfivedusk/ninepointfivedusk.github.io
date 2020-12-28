@@ -153,13 +153,33 @@
     }
 
 
-    #result td {
-        text-align: left;
+    #result {
+        width: 100%;
+        table-layout: fixed;
     }
+
+     #result td:nth-child(1) {
+        width: 50%;
+        text-align: right;  
+        padding-right: 0.6rem;
+    }
+
+    #result td:nth-child(2) {
+        width: 50%;
+
+        text-align: left;  
+    }
+
 
     .modal-content * {
         font-family: serif;
     }
+
+    .delete-line {
+        text-decoration: line-through;
+        color: white;
+    }
+
     </style>
 </head>
 
@@ -399,10 +419,10 @@ function show_song_data_by(song_data, by) {
             } else {
                 if (isNaN(ep)) {
                     $("#result").append("<tr><td>&nbsp;</td><td>&nbsp;</td></tr>");
-                    $("#result").append(`<tr><td>【快閃】</td><td></td></tr>`);
+                    $("#result").append(`<tr><td colspan="2" style="text-align: center; padding-bottom: 0.5em; font-size: 1.2em"><span class="delete-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 快閃 <span class="delete-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>`);
                 } else {
                     $("#result").append("<tr><td>&nbsp;</td><td>&nbsp;</td></tr>");
-                    $("#result").append(`<tr><td>【EP ${ep}】</td><td></td></tr>`);
+                    $("#result").append(`<tr><td colspan="2" style="text-align: center; padding-bottom: 0.5em; font-size: 1.2em"><span class="delete-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> EP ${ep} <span class="delete-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>`);
                     ep_set.add(ep);
 
                 }
@@ -431,10 +451,10 @@ function show_song_data_by(song_data, by) {
             } else {
                 if (isNaN(year)) {
                     $("#result").append("<tr><td>&nbsp;</td><td>&nbsp;</td></tr>");
-                    $("#result").append(`<tr><td>【快閃】</td><td></td></tr>`);
+                    $("#result").append(`<tr><td><span class="delete-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 快閃 <span class="delete-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td></td></tr>`);
                 } else {
                     $("#result").append("<tr><td>&nbsp;</td><td>&nbsp;</td></tr>");
-                    $("#result").append(`<tr><td>【${year}】</td><td></td></tr>`);
+                    $("#result").append(`<tr><td colspan="2" style="text-align: center; padding-bottom: 0.5em; font-size: 1.2em"><span class="delete-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> ${year} <span class="delete-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr>`);
                     year_set.add(year);
 
                 }
@@ -442,9 +462,9 @@ function show_song_data_by(song_data, by) {
             }
 
             if (video_id === '') {
-                $("#result").append(`<tr><td>${value.原唱}</td><td>${value.歌名} (${value.年份})</td></tr>`);
+                $("#result").append(`<tr><td>${value.原唱}</td><td>${value.歌名}</td></tr>`);
             } else {
-                $("#result").append(`<tr><td>${value.原唱}</td><td>${value.歌名} (${value.年份}) <a class="youtube_link" id="${video_id}__${parse_time(value.開始秒數)}" href="#">連結</a></td></tr>`);
+                $("#result").append(`<tr><td>${value.原唱}</td><td>${value.歌名} <a class="youtube_link" id="${video_id}__${parse_time(value.開始秒數)}" href="#">連結</a></td></tr>`);
             }
         })
     }
@@ -470,37 +490,37 @@ $(document).ready(function() {
     $("#btn_email").tooltip({ 'title': '9.5dusk@gmail.com', 'placement': 'bottom' });
     $("#btn_ig").tooltip({ 'title': 'ninepointfivedusk', 'placement': 'bottom' });
 
-    // show_song_data_by(song_data, 'ep');
+    show_song_data_by(song_data, 'ep');
     let by_button = 'by_ep';
 
 
-    let ep_set = new Set();
+    // let ep_set = new Set();
 
-    $.each(sort_song_data_by(song_data, 'ep'), function(idx, value) {
-        video_id = parse_video_id(value.YouTube連結);
-        let ep = parseInt(value.EP);
+    // $.each(sort_song_data_by(song_data, 'ep'), function(idx, value) {
+    //     video_id = parse_video_id(value.YouTube連結);
+    //     let ep = parseInt(value.EP);
 
-        if (ep_set.has(ep)) {
+    //     if (ep_set.has(ep)) {
 
-        } else {
-            if (isNaN(ep)) {
-                $("#result").append("<tr><td>&nbsp;</td><td>&nbsp;</td></tr>");
-                $("#result").append(`<tr><td>【快閃】</td><td></td></tr>`);
-            } else {
-                $("#result").append("<tr><td>&nbsp;</td><td>&nbsp;</td></tr>");
-                $("#result").append(`<tr><td>【EP ${ep}】</td><td></td></tr>`);
-                ep_set.add(ep);
+    //     } else {
+    //         if (isNaN(ep)) {
+    //             $("#result").append("<tr><td>&nbsp;</td><td>&nbsp;</td></tr>");
+    //             $("#result").append(`<tr><td>【快閃】</td><td></td></tr>`);
+    //         } else {
+    //             $("#result").append("<tr><td>&nbsp;</td><td>&nbsp;</td></tr>");
+    //             $("#result").append(`<tr><td>【EP ${ep}】</td><td></td></tr>`);
+    //             ep_set.add(ep);
 
-            }
+    //         }
 
-        }
+    //     }
 
-        if (video_id === '') {
-            $("#result").append(`<tr><td>${value.原唱}</td><td>${value.歌名} (${value.年份})</td></tr>`);
-        } else {
-            $("#result").append(`<tr><td>${value.原唱}</td><td>${value.歌名} (${value.年份}) <a class="youtube_link" id="${video_id}__${parse_time(value.開始秒數)}" href="#">連結</a></td></tr>`);
-        }
-    })
+    //     if (video_id === '') {
+    //         $("#result").append(`<tr><td>${value.原唱}</td><td>${value.歌名} (${value.年份})</td></tr>`);
+    //     } else {
+    //         $("#result").append(`<tr><td>${value.原唱}</td><td>${value.歌名} (${value.年份}) <a class="youtube_link" id="${video_id}__${parse_time(value.開始秒數)}" href="#">連結</a></td></tr>`);
+    //     }
+    // })
 
     $(".btn-group-toggle").click(function(e) {
         if (e.target.id.startsWith("option") || e.target.id === by_button) {
@@ -532,19 +552,19 @@ $(document).ready(function() {
 
     
 
-    $(".youtube_link").click(function(e){
-        console.log("!!!!!")
-        $(".tr_youtube_frame").remove();
+    // $(".youtube_link").click(function(e){
+    //     console.log("!!!!!")
+    //     $(".tr_youtube_frame").remove();
 
-        let id = e.target.id;
-        ids = id.split("__");
+    //     let id = e.target.id;
+    //     ids = id.split("__");
 
-        // $(`<tr>${generate_youtube_embed_html(ids[0], ids[1])}</tr>`).insertAfter($(this).parent().parent())
-        $(this).parent().parent().after('<tr class="tr_youtube_frame"><td colspan="2"></td></tr>');
-        $(".tr_youtube_frame td").html(generate_youtube_embed_html(ids[0], ids[1]));
-        // .insert("<tr>" + generate_youtube_embed_html(ids[0], ids[1]) + "</tr>");
-        console.log(id);
-    })
+    //     // $(`<tr>${generate_youtube_embed_html(ids[0], ids[1])}</tr>`).insertAfter($(this).parent().parent())
+    //     $(this).parent().parent().after('<tr class="tr_youtube_frame"><td colspan="2"></td></tr>');
+    //     $(".tr_youtube_frame td").html(generate_youtube_embed_html(ids[0], ids[1]));
+    //     // .insert("<tr>" + generate_youtube_embed_html(ids[0], ids[1]) + "</tr>");
+    //     console.log(id);
+    // })
 
     $(".close").click(function(){
         $(".tr_youtube_frame").remove();
