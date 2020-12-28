@@ -39,6 +39,7 @@
     html,
     body {
         height: 100%;
+        overflow-x: hidden;
     }
 
     body {
@@ -183,13 +184,111 @@
 
     @media only screen and (max-width: 480px) {
         #result td:nth-child(1) {
-            width: 45%;
+            width: 20%;
+            text-align: left;
         }
 
         #result td:nth-child(2) {
             width: 55%;
         }
     }
+    svg:hover #logo_sun {
+        fill: #FFFFFF
+    }
+
+    #logo_sun {
+        cursor: pointer;
+        transition: fill 3s ease-out;
+        fill: #FA9CB6
+    }
+
+    .fade-in {
+        animation: fadeIn ease 2s infinite;
+        -webkit-animation: fadeIn ease 2s infinite;
+        -moz-animation: fadeIn ease 2s infinite;
+        -o-animation: fadeIn ease 2s infinite;
+        -ms-animation: fadeIn ease 2s infinite;
+    }
+
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        50% {
+            opacity: 0.7;
+        }
+        80% {
+            opacity: 0.1;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+
+    @-moz-keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        50% {
+            opacity: 0.7;
+        }
+        80% {
+            opacity: 0.1;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+
+    @-webkit-keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        50% {
+            opacity: 0.7;
+        }
+        80% {
+            opacity: 0.1;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+
+    @-o-keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        50% {
+            opacity: 0.7;
+        }
+        80% {
+            opacity: 0.1;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+
+    @-ms-keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        50% {
+            opacity: 0.7;
+        }
+        80% {
+            opacity: 0.1;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+
+    #logo_text {
+        cursor: pointer;
+    }
+/**/
     </style>
 </head>
 
@@ -258,7 +357,7 @@
                         <rect x="112" y="175" width="736" height="476" style="fill:rgb(37,37,37);" /> </g>
                 -->
             <g transform="matrix(1,0,0,1,18.7208,9.44954)">
-                <g transform="matrix(0.973888,0,0,0.947484,-418.144,-269.771)">
+                <g id="logo_sun" class="hvr-grow" transform="matrix(0.973888,0,0,0.947484,-418.144,-269.771)">
                     <g transform="matrix(0.490362,0,0,0.490362,151.747,157.243)">
                         <path d="M643.449,464C628.401,449.735 618.3,430.302 616,408.557C615.669,405.433 615.5,402.261 615.5,399.05C615.5,374.614 625.314,352.453 641.212,336.295L786.579,362.21C791.667,373.448 794.5,385.92 794.5,399.05C794.5,424.612 783.761,447.685 766.551,464L643.449,464Z" style="fill:rgb(236,68,26);"></path>
                     </g>
@@ -341,6 +440,7 @@
                 </g>
             </g>
             <g id="Layer1">
+                <text class="fade-in" x="50%" y="45%" id="logo_text" dominant-baseline="middle" text-anchor="middle" fill="white" style="text-align: center; font-size: 2rem">☀</text>
             </g>
         </svg>
     </div>
